@@ -348,13 +348,23 @@ $page->navigation();
                                 <label><?= __('Advertisements') ?></label>
 
                                 <div class="ui toggle checkbox advertisements">
-                                    <?php if (true === $user->getAdvertisements()) { ?>
-                                        <input type="checkbox" name="enable-advertisements" checked="checked" />
-                                    <?php } else { ?>
-                                        <input type="checkbox" name="enable-advertisements" />
-                                    <?php } ?>
+                                    <?php
+                                        $wishthis_hosts = [
+                                            'wishthis.localhost',
+                                            'wishthis.online',
+                                            'rc.wishthis.online',
+                                            'dev.wishthis.online',
+                                        ];
 
-                                    <label><?= __('Enable advertisements') ?></label>
+                                        if (!in_array($_SERVER['HTTP_HOST'], $wishthis_hosts, true)) { ?>
+                                            <input type="checkbox" name="enable-advertisements" disabled="disabled" />
+                                        <?php } elseif (true === $user->getAdvertisements()) { ?>
+                                            <input type="checkbox" name="enable-advertisements" checked="checked" />
+                                        <?php } else { ?>
+                                            <input type="checkbox" name="enable-advertisements" />
+                                        <?php } ?>
+
+                                        <label><?= __('Enable advertisements') ?></label>
                                 </div>
                             </div>
 
