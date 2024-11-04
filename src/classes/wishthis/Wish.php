@@ -74,43 +74,13 @@ class Wish
 
     public static function getAffiliateLink(string $url): string
     {
-        $urlParts = parse_url($url);
-
-        if (isset($urlParts['query'])) {
-            \parse_str($urlParts['query'], $urlParameters);
-        } else {
-            $urlParameters = [];
-        }
-
-        foreach (self::$affiliates as $host => $tagId) {
-            if (\str_contains($urlParts['host'], $host)) {
-                $urlParameters['tag'] = $tagId;
-                $urlParts['query']    = \http_build_query($urlParameters);
-                $url                  = $urlParts['scheme'] . '://' . $urlParts['host'] . $urlParts['path'] . '?' . $urlParts['query'];
-
-                break;
-            }
-        }
-
+        // Bypass the link generation entirely for Private.coffee fork
         return $url;
     }
 
     public static function hasAffiliateLink(string $url): bool
     {
-        $urlParts = parse_url($url);
-
-        if (isset($urlParts['query'])) {
-            \parse_str($urlParts['query'], $urlParameters);
-        } else {
-            $urlParameters = [];
-        }
-
-        foreach (self::$affiliates as $host => $tagId) {
-            if (\str_contains($urlParts['host'], $host) && isset($urlParameters['tag'])) {
-                return true;
-            }
-        }
-
+        // Just bypass the check entirely for Private.coffee fork
         return false;
     }
 
