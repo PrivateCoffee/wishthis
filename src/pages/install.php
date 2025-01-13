@@ -286,7 +286,7 @@ switch ($step) {
                 `last_login`                 DATETIME     NOT NULL DEFAULT NOW(),
                 `power`                      INT          NOT NULL DEFAULT 1,
                 `birthdate`                  DATE         NULL     DEFAULT NULL,
-                `language`                   VARCHAR(5)   NOT NULL DEFAULT "' . DEFAULT_LOCALE . '",
+                `language`                   VARCHAR(6)   NOT NULL DEFAULT "' . DEFAULT_LOCALE . '",
                 `currency`                   VARCHAR(3)   NOT NULL DEFAULT "' . $currencyISO . '",
                 `name_first`                 VARCHAR(32)  NULL     DEFAULT NULL,
                 `name_last`                  VARCHAR(32)  NULL     DEFAULT NULL,

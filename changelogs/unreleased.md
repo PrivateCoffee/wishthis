@@ -18,7 +18,7 @@
 
 ### Fixed
 
--   Nothing
+-   Users with Spanish (Latin American) locale (`es_419`) unable to register (#209)
 
 ### Security
 
