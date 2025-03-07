@@ -8,7 +8,7 @@
 
 -   Nothing
 
-### Depcreated
+### Deprecated
 
 -   Nothing
 

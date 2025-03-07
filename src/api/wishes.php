@@ -22,7 +22,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
             if (isset($_GET['wishlist_user'])) {
                 $response['html'] = $wish->getCard($_GET['wishlist_user']);
             }
-        } elseif (isset($_GET['wish_url'])) {
+        } elseif (!empty($_GET['wish_url'])) {
             if (isset($_GET['isAffiliate'])) {
                 $wishUrl = \base64_decode($_GET['wish_url']);
 
