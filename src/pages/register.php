@@ -18,11 +18,11 @@ $page = new Page(__FILE__, $pageTitle);
 
 if (isset($_POST['email'], $_POST['password']) && !empty($_POST['planet']) && !$registrationDisabled) {
     $users      = $database
-    ->query(
-        'SELECT *
+        ->query(
+            'SELECT *
            FROM `users`;'
-    )
-    ->fetchAll();
+        )
+        ->fetchAll();
     $emails     = array_map(
         function ($user) {
             return $user['email'];
@@ -33,7 +33,7 @@ if (isset($_POST['email'], $_POST['password']) && !empty($_POST['planet']) && !$
 
     $isHuman     = false;
     $planet      = mb_strtolower($_POST['planet']);
-    $planetName  = mb_strtoupper(mb_substr($planet, 0, 1)) . mb_substr($planet, 1);
+    $planetName  = Sanitiser::sanitiseText(mb_strtoupper(mb_substr($planet, 0, 1)) . mb_substr($planet, 1));
     $planets     = [
         mb_strtolower(__('Mercury')),
         mb_strtolower(__('Venus')),
@@ -71,16 +71,16 @@ if (isset($_POST['email'], $_POST['password']) && !empty($_POST['planet']) && !$
              * Password reset
              */
             $userQuery = $database
-            ->query(
-                'SELECT *
+                ->query(
+                    'SELECT *
                    FROM `users`
                   WHERE `email`                = :user_email
                     AND `password_reset_token` = :user_password_reset_token',
-                [
-                    'user_email'                => $user_email,
-                    'user_password_reset_token' => $user_token,
-                ]
-            );
+                    [
+                        'user_email'                => $user_email,
+                        'user_password_reset_token' => $user_token,
+                    ]
+                );
 
             if (false !== $userQuery) {
                 $user = new User($userQuery->fetch());
@@ -88,15 +88,15 @@ if (isset($_POST['email'], $_POST['password']) && !empty($_POST['planet']) && !$
                 echo \date('d.m.Y H:i') . ' <= ' . \date('d.m.Y H:i', $user->getPasswordResetValidUntil()) . '.';
                 if (time() <= $user->getPasswordResetValidUntil()) {
                     $database
-                    ->query(
-                        'UPDATE `users`
+                        ->query(
+                            'UPDATE `users`
                             SET `password` = :user_password
                           WHERE `id`       = :user_id;',
-                        [
-                            'user_password' => User::passwordToHash($_POST['password']),
-                            'user_id'       => $user->getId(),
-                        ]
-                    );
+                            [
+                                'user_password' => User::passwordToHash($_POST['password']),
+                                'user_id'       => $user->getId(),
+                            ]
+                        );
 
                     $page->messages[] = Page::success(
                         'Password has been successfully reset for <strong>' . $user_email . '</strong>.',
@@ -179,8 +179,8 @@ if (isset($_POST['email'], $_POST['password']) && !empty($_POST['planet']) && !$
             $wishlist_hash = sha1(time() . $user_id . $wishlist_name);
 
             $database
-            ->query(
-                'INSERT INTO `wishlists` (
+                ->query(
+                    'INSERT INTO `wishlists` (
                     `user`,
                     `name`,
                     `hash`
@@ -189,12 +189,12 @@ if (isset($_POST['email'], $_POST['password']) && !empty($_POST['planet']) && !$
                     :wishlist_name,
                     :wishlist_hash
                 );',
-                [
-                    'wishlist_user_id' => $user_id,
-                    'wishlist_name'    => $wishlist_name,
-                    'wishlist_hash'    => $wishlist_hash,
-                ]
-            );
+                    [
+                        'wishlist_user_id' => $user_id,
+                        'wishlist_name'    => $wishlist_name,
+                        'wishlist_hash'    => $wishlist_hash,
+                    ]
+                );
         }
     } else {
         $page->messages[] = Page::error(
@@ -236,8 +236,7 @@ $page->navigation();
                                                 name="email"
                                                 placeholder="john.doe@domain.tld"
                                                 value="<?= $_GET['password-reset'] ?>"
-                                                readonly
-                                            />
+                                                readonly />
                                         <?php } else { ?>
                                             <input type="email" name="email" placeholder="john.doe@domain.tld" />
                                         <?php } ?>
@@ -278,12 +277,10 @@ $page->navigation();
                                 <input class="ui primary button"
                                     type="submit"
                                     value="<?= $buttonSubmit ?>"
-                                    title="<?= $buttonSubmit ?>"
-                                />
+                                    title="<?= $buttonSubmit ?>" />
                                 <a class="ui tertiary button"
-                                href="<?= Page::PAGE_LOGIN ?>"
-                                title="<?= __('Login') ?>"
-                                >
+                                    href="<?= Page::PAGE_LOGIN ?>"
+                                    title="<?= __('Login') ?>">
                                     <?= __('Login') ?>
                                 </a>
                             </div>
