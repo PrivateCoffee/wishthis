@@ -19,6 +19,7 @@
 ### Fixed
 
 -   Database username being sanitised during installation causing a mismatch between input and actual credentials (#212)
+-   Multibyte strings not working in planet captcha (#213)
 
 ### Security
 
