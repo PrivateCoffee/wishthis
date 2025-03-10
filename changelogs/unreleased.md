@@ -22,4 +22,4 @@
 
 ### Security
 
--   Nothing
+-   Added a check to disable database testing (`/index.php?page=api&module=database-test`) after wishthis has been installed - Thanks [@kumitterer](https://github.com/kumitterer)!

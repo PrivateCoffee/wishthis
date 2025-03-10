@@ -10,6 +10,14 @@ namespace wishthis;
 
 global $page, $database;
 
+if (isset($database) && $database) {
+    echo __('Refused to test database connection after installation.');
+
+    $response['dbTestSuccess'] = false;
+
+    return;
+}
+
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'POST':
         $success = false;
