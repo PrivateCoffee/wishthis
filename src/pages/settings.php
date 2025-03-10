@@ -17,6 +17,11 @@ if (isset($_POST['mjml_api'], $_POST['api_application_id'], $_POST['mjml_api_sec
     $options->setOption('mjml_api_application_id', $_POST['api_application_id']);
     $options->setOption('mjml_api_secret_key', $_POST['mjml_api_secret_key']);
 }
+
+if (isset($_POST['mjml_api'])) {
+    // In contrast to the two before, this one may reasonably be set to an empty string.
+    $options->setOption('mjml_api_url', $_POST['api_url']);
+}
 ?>
 
 <main>
@@ -29,6 +34,15 @@ if (isset($_POST['mjml_api'], $_POST['api_application_id'], $_POST['mjml_api_sec
 
             <h3 class="ui header"><?= __('API') ?></h3>
             <form class="ui form" method="POST">
+                <div class="field">
+                    <label><?=__('API URL') ?></label>
+                    <input type="text"
+                           name="api_url"
+                           placeholder="https://api.mjml.io/v1/"
+                           value="<?= $options->getOption('mjml_api_url'); ?>"
+                    />     
+                </div>
+
                 <div class="field">
                     <label><?= __('Application ID') ?></label>
                     <input type="text"

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d2667894e4108f2ea9ece2a5b6a85243",
+    "content-hash": "939c1896caf454544982bfefec1310cc",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -552,6 +552,55 @@
             "time": "2024-06-07T07:58:43+00:00"
         },
         {
+            "name": "kumi/mjml-php",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://git.private.coffee/kumi/mjml-php.git",
+                "reference": "b8ce0c35cc3376b5fc5ecd913a6ea701d2de762d"
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.5"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Qferrer\\Mjml\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Qferrer\\Tests\\Mjml\\": "tests/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "phpunit tests/"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Quentin",
+                    "email": "qferrer@outook.com"
+                },
+                {
+                    "name": "Kumi",
+                    "email": "mjml-php@kumi.email"
+                }
+            ],
+            "description": "A simple PHP library to render MJML to HTML.",
+            "time": "2025-03-10T15:03:58+00:00"
+        },
+        {
             "name": "ml/iri",
             "version": "1.1.4",
             "target-dir": "ML/IRI",
@@ -867,51 +916,6 @@
                 "source": "https://github.com/php-fig/http-message/tree/2.0"
             },
             "time": "2023-04-04T09:54:51+00:00"
-        },
-        {
-            "name": "qferr/mjml-php",
-            "version": "2.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/qferr/mjml-php.git",
-                "reference": "c7185024d8b561bd3b532b29f46cba0f4b789b70"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/qferr/mjml-php/zipball/c7185024d8b561bd3b532b29f46cba0f4b789b70",
-                "reference": "c7185024d8b561bd3b532b29f46cba0f4b789b70",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "ext-json": "*",
-                "php": ">=7.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^8.5"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Qferrer\\Mjml\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Quentin",
-                    "email": "qferrer@outook.com"
-                }
-            ],
-            "description": "A simple PHP library to render MJML to HTML.",
-            "support": {
-                "issues": "https://github.com/qferr/mjml-php/issues",
-                "source": "https://github.com/qferr/mjml-php/tree/2.0.0"
-            },
-            "time": "2022-04-09T21:34:38+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -3917,10 +3921,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "kumi/mjml-php": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
+    "platform": {},
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }

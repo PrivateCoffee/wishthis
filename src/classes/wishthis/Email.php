@@ -44,9 +44,16 @@ class Email
     {
         global $options;
 
+        // Break if MJML API is not configured
+        if (!$options->getOption('mjml_api_application_id') && !$options->getOption('mjml_api_url')) {
+            return false;
+        }
+
         $api      = new \Qferrer\Mjml\Http\CurlApi(
             $options->getOption('mjml_api_application_id'),
-            $options->getOption('mjml_api_secret_key')
+            $options->getOption('mjml_api_secret_key'),
+            null,
+            $options->getOption('mjml_api_url')
         );
         $renderer = new \Qferrer\Mjml\Renderer\ApiRenderer($api);
 

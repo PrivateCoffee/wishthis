@@ -100,6 +100,17 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'kumi/mjml-php' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => 'b8ce0c35cc3376b5fc5ecd913a6ea701d2de762d',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../kumi/mjml-php',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
+            'dev_requirement' => false,
+        ),
         'marcocesarato/php-conventional-changelog' => array(
             'pretty_version' => '1.17.2',
             'version' => '1.17.2.0',
@@ -297,15 +308,6 @@
             'provided' => array(
                 0 => '1.0|2.0|3.0',
             ),
-        ),
-        'qferr/mjml-php' => array(
-            'pretty_version' => '2.0.0',
-            'version' => '2.0.0.0',
-            'reference' => 'c7185024d8b561bd3b532b29f46cba0f4b789b70',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../qferr/mjml-php',
-            'aliases' => array(),
-            'dev_requirement' => false,
         ),
         'ralouphie/getallheaders' => array(
             'pretty_version' => '3.0.3',
