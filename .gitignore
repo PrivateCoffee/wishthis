@@ -18,3 +18,5 @@
 
 /.vscode
 /src/config/config.php
+
+/composer.phar
