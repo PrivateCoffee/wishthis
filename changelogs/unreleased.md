@@ -18,7 +18,7 @@
 
 ### Fixed
 
--   Nothing
+-   Database username being sanitised during installation causing a mismatch between input and actual credentials (#212)
 
 ### Security
 
