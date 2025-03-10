@@ -2,7 +2,7 @@
 
 ### Added
 
--   Support for PHP 8.3
+-   Nothing
 
 ### Changed
 
@@ -18,9 +18,8 @@
 
 ### Fixed
 
--   Database username being sanitised during installation causing a mismatch between input and actual credentials (#212)
--   Multibyte strings not working in planet captcha (#213)
+-   Nothing
 
 ### Security
 
--   Added a check to disable database testing (`/index.php?page=api&module=database-test`) after wishthis has been installed - Thanks [@kumitterer](https://github.com/kumitterer)!
+-   Nothing
