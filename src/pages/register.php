@@ -32,21 +32,21 @@ if (isset($_POST['email'], $_POST['password']) && !empty($_POST['planet']) && !$
     $user_email = Sanitiser::getEmail($_POST['email']);
 
     $isHuman     = false;
-    $planet      = strtolower(Sanitiser::getTitle($_POST['planet']));
-    $planetName  = strtoupper($planet[0]) . substr($planet, 1);
+    $planet      = mb_strtolower($_POST['planet']);
+    $planetName  = Sanitiser::sanitiseText(mb_strtoupper(mb_substr($planet, 0, 1)) . mb_substr($planet, 1));
     $planets     = [
-        strtolower(__('Mercury')),
-        strtolower(__('Venus')),
-        strtolower(__('Earth')),
-        strtolower(__('Mars')),
-        strtolower(__('Jupiter')),
-        strtolower(__('Saturn')),
-        strtolower(__('Uranus')),
-        strtolower(__('Neptune')),
+        mb_strtolower(__('Mercury')),
+        mb_strtolower(__('Venus')),
+        mb_strtolower(__('Earth')),
+        mb_strtolower(__('Mars')),
+        mb_strtolower(__('Jupiter')),
+        mb_strtolower(__('Saturn')),
+        mb_strtolower(__('Uranus')),
+        mb_strtolower(__('Neptune')),
     ];
     $not_planets = [
-        strtolower(__('Pluto')),
-        strtolower(__('Sun')),
+        mb_strtolower(__('Pluto')),
+        mb_strtolower(__('Sun')),
     ];
 
     if (in_array($planet, array_merge($planets, $not_planets))) {
