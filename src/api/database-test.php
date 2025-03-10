@@ -15,7 +15,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $success = false;
 
         if (isset($database) && $database) {
-            echo _('Refused to test database connection after installation.');
+            echo __('Refused to test database connection after installation.');
             $response['dbTestSuccess'] = false;
         }
         else {
