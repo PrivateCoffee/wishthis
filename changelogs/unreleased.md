@@ -2,7 +2,7 @@
 
 ### Added
 
--   Nothing
+-   Support for PHP 8.3
 
 ### Changed
 
