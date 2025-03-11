@@ -17,7 +17,7 @@
             />
         </mj-attributes>
 
-        <mj-font name="Raleway" href="https://fonts.googleapis.com/css?family=Raleway" />
+        <mj-font name="Raleway" href="https://googledonts.private.coffee/css?family=Raleway" />
 
         <mj-style>
         a {
