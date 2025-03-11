@@ -29,6 +29,10 @@ class Email
 
         $this->mjml = str_replace('<mj-include path="MJML_PART" />', $this->contentsPart, $this->contentsTemplate);
 
+        /** Replace references to wishthis.online with instance-specific information */
+        $baseurl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'];
+        $this->mjml = str_replace('https://wishthis.online', $baseurl, $this->mjml);
+
         /** Set Locale */
         global $locale;
 
